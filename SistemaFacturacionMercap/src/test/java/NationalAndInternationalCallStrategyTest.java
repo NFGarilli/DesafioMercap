@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 public class NationalAndInternationalCallStrategyTest{
 
         @Test
-        public void getANationalAndInternationalCallStrategyCallDurationInMinutes(){
+        public void aNationalAndInternationalCallStrategyCallOf5MinutesToSanLuisWhoseCostPerMinuteIs$3ItsCostIs$15(){
 
-            Integer callDuration = 3;
+            Integer callDuration = 5;
             Destination sanLuis = new Destination(3.0,  "SanLuis");
             LocalDateTime callDateTime = LocalDateTime.now();
 
@@ -21,7 +21,6 @@ public class NationalAndInternationalCallStrategyTest{
             Double callCost = strategy.call(callDetails);
 
             assertEquals(expectedCost, callCost);
-
         }
 
 }

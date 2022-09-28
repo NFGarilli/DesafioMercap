@@ -15,9 +15,10 @@ public class LocalCallStrategy implements ICallStrategy {
         Double expensiveMinuteCost  = 0.20;
         Double normalMinuteCost     = 0.10;
 
-        return Utility.LocalCallHelper.isExpensiveDayAndTime(callDetails.dateAndTimeOfCall)
-                ? callDetails.callDurationMinutes * expensiveMinuteCost
-                : callDetails.callDurationMinutes * normalMinuteCost;
+        return Utility.CallHelper.callIsMadeInAWorkingDayOnRushHour(callDetails.getDateAndTimeOfCall())
+
+                ? Utility.CallHelper.costOfCall(callDetails.getCallDurationMinutes(), expensiveMinuteCost)
+                : Utility.CallHelper.costOfCall(callDetails.getCallDurationMinutes(), normalMinuteCost);
 
     }
 

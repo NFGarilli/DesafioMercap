@@ -11,7 +11,6 @@ public class Client {
     public ICallStrategy callStrategy;
 
 
-
     public Client(String name, Double baseCost){
         this.name = name;
         this.baseCost = baseCost;
@@ -31,7 +30,14 @@ public class Client {
         return costOfThisCall;
     }
 
+    public void setCallStrategy(CallType callType) {
 
+        ICallStrategy callStrategy = callType.equals(CallType.LOCALCALL)
+                ? new LocalCallStrategy()
+                : new NationalAndInternationalCallStrategy();
+
+        this.callStrategy = callStrategy;
+    }
 
     public void setCostOfCalls(Double costOfCalls) {
         this.costOfCalls = costOfCalls;
@@ -61,15 +67,5 @@ public class Client {
         return callsMade;
     }
 
-    public void setCallStrategy(CallType callType) {
 
-
-        ICallStrategy callStrategy = callType.equals(CallType.LOCALCALL)
-                ? new LocalCallStrategy()
-                : new NationalAndInternationalCallStrategy();
-
-        this.callStrategy = callStrategy;
-
-
-    }
 }

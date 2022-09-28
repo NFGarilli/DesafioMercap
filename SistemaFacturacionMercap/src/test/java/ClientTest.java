@@ -22,13 +22,26 @@ public class ClientTest {
 
     @Test
     public void aClientMakesALocalCallWithADurationOf1MinuteInAWeekDayOnARushHourAndItsCostIs2Cents(){
-            //DEBUG ESTE CON DIA 26 ROMPE
-        LocalDateTime weekDayRushHour = LocalDateTime.of(2022,9,28,12,0);
+
+        LocalDateTime weekDayRushHour = LocalDateTime.of(2022,9,26,12,0);
         Client client1          = new Client("Juan", 30.0);
         CallDetails callDetails = new CallDetails(1, new Destination(), weekDayRushHour);
 
         Double actualCostOfCall     = client1.makeCall(callDetails, Client.CallType.LOCALCALL);
         Double expectedCostOfCall   = 0.2;
+
+        assertEquals(expectedCostOfCall, actualCostOfCall);
+    }
+
+    @Test
+    public void aClientMakesALocalCallWithADurationOf1MinuteInAWeekDayAndNotInTheRushHourAndItsCostIs1Cents(){
+
+        LocalDateTime weekDayRushHour = LocalDateTime.of(2022,9,26,22,0);
+        Client client1          = new Client("Juan", 30.0);
+        CallDetails callDetails = new CallDetails(1, new Destination(), weekDayRushHour);
+
+        Double actualCostOfCall     = client1.makeCall(callDetails, Client.CallType.LOCALCALL);
+        Double expectedCostOfCall   = 0.1;
 
         assertEquals(expectedCostOfCall, actualCostOfCall);
     }
@@ -46,11 +59,10 @@ public class ClientTest {
         assertEquals(expectedCostOfCall, actualCostOfCall);
     }
 
-
     @Test
     public void aClientMakesThreeCallsSoHisAdditionalCostIncreasesAndItsCallsMadeListAreNowThree(){
 
-        LocalDateTime weekendDayRushHour = LocalDateTime.of(2022,9,22,12,0);
+        LocalDateTime weekendDayRushHour = LocalDateTime.of(2022,9,24,12,0);
         Client client1          = new Client("Juan", 30.0);
         CallDetails callDetails = new CallDetails(1, new Destination(), weekendDayRushHour);
 

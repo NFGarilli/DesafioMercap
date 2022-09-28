@@ -5,10 +5,7 @@ public class CallDetails {
 
     Integer callDurationMinutes;
     Destination destination;
-
     LocalDateTime dateAndTimeOfCall;
-
-    Double costOfCall = 0.0;
 
 
     public CallDetails(Integer callDurationMinutes, Destination destination, LocalDateTime dateAndTimeOfCall){
@@ -17,19 +14,19 @@ public class CallDetails {
         this.dateAndTimeOfCall = dateAndTimeOfCall;
     }
 
-    public Double getCostOfCall() { return costOfCall;}
+
+
     public Integer getCallDurationMinutes() {
         return callDurationMinutes;
     }
+
     public Destination getDestination() {
         return destination;
     }
 
-    public LocalDateTime getLocalDateTime() { return dateAndTimeOfCall; }
+    public LocalDateTime getDateAndTimeOfCall() { return dateAndTimeOfCall; }
 
-    public void setCostOfCall(Double costOfCall) {
-        this.costOfCall = costOfCall;
-    }
+
 
 
 }
